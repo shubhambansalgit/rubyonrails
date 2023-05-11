@@ -1,0 +1,51 @@
+<%= simple_form_for(@user) do |form| %>
+  <%= form.error_notification %>
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+
+
+    <div class="form-inputs">
+    <%= form.input :name %>
+  </div>
+
+  <table class='table'>
+    <thead>
+      <tr>
+        <th></th>
+        <th>Address</th>
+        <th>is_primary</th>
+      </tr>
+    </thead>
+    <tbody class='fields'>
+      <%= form.simple_fields_for :addresses do |builder| %>
+        <%= render 'address', f: builder %>
+      <% end %>
+    </tbody>
+    
+  </table>
+
+  <div class="form-actions">
+    <%= form.button :submit %>
+    <%= link_to_add_row('Add Address', form, :addresses, class: 'btn btn-primary') %>
+  </div>
+<% end %>
+
+<script>
+
+  $('form').on('click', '.add_fields', function(event) {
+      console.log("cominggggggggg")
+      var regexp, time;
+      time = new Date().getTime();
+      regexp = new RegExp($(this).data('id'), 'g');
+      $('.fields').append($(this).data('fields').replace(regexp, time));
+      return event.preventDefault();
+    });
+    
+
+
+
+    
+
+    
+</script>
+
