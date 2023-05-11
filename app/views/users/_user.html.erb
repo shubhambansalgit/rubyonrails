@@ -2,8 +2,10 @@
   <p>
     <strong>Name:</strong>
     <%= user.name %>
-    <%= user.addresses.each do |address|%>
-      <li> <%= address.name%>
+    <% user.addresses.each do |address| %>
+      <% if address.is_primary %>
+        <li><%= address.name %></li>
+      <% end %>
     <% end %>
   </p>
 

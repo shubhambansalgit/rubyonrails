@@ -33,19 +33,11 @@
 <script>
 
   $('form').on('click', '.add_fields', function(event) {
-      console.log("cominggggggggg")
       var regexp, time;
       time = new Date().getTime();
       regexp = new RegExp($(this).data('id'), 'g');
       $('.fields').append($(this).data('fields').replace(regexp, time));
       return event.preventDefault();
-    });
-    
-
-
-
-    
-
-    
+    });    
 </script>
 
